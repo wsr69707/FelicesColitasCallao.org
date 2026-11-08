@@ -7,13 +7,30 @@ function crearMenu() {
     const contenedor = document.getElementById("menu");
     contenedor.innerHTML = `
         <div class="menu" id="barra-menu">
-            <img src="imagenes/logo.png" class="logo" alt="Logo Colitas Felices Callao">
+            <img src="imagenes/logo-menu.png" class="logo" alt="Logo de Felices Colitas Callao, protección de mascotas">
             <button class="boton-menu" id="boton-menu">☰</button>
             <div class="enlaces" id="enlaces">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="quienesSomos.html">Quienes somos</a></li>
-                    <li><a href="colitasFelices.html">Colitas Felices</a></li>
+                    <li><a href="quienes-somos.html">Quiénes somos</a></li>
+                    <li class="tiene-submenu">
+                        <a href="historias-mascotas-felices.html" aria-haspopup="true">Felices Colitas Blog<span class="flecha-sub" aria-hidden="true">▼</span></a>
+                        <div class="submenu">
+                            <ul>
+                                <li><a href="historias-mascotas-felices.html">Historias felices</a></li>
+                                <li><a href="informate.html">Infórmate</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="tiene-submenu">
+                        <a href="mascotas-perdidas-callao.html" aria-haspopup="true">Ayuda<span class="flecha-sub" aria-hidden="true">▼</span></a>
+                        <div class="submenu">
+                            <ul>
+                                <li><a href="mascotas-perdidas-callao.html">Mascotas perdidas</a></li>
+                                <li><a href="reportar-mascota.html">Reportar una mascota</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     <li><a href="iniciosesion.html">Iniciar sesión</a></li>
                     <li><a href="contactanos.html">Contáctanos</a></li>
                 </ul>
@@ -24,10 +41,28 @@ function crearMenu() {
     const paginaActual = window.location.pathname.split("/").pop() || "index.html";
     const enlaces = document.querySelectorAll("#enlaces a");
     for (const enlace of enlaces) {
-        if (enlace.getAttribute("href") === paginaActual) enlace.classList.add("activo");
+        if (enlace.getAttribute("href") === paginaActual) {
+            enlace.classList.add("activo");
+            // si la página está dentro de un desplegable, también se marca su título (Blog o Ayuda)
+            const padre = enlace.closest(".tiene-submenu");
+            if (padre) padre.querySelector("a").classList.add("activo");
+        }
     }
 
-    // En celular: el botón ☰ muestra u oculta los enlaces
+    // En tablet o pantalla táctil no existe "pasar el mouse": el primer toque abre el desplegable
+    document.querySelectorAll(".tiene-submenu > a").forEach(function (enlaceSub) {
+        enlaceSub.onclick = function (e) {
+            const tactil = window.matchMedia("(hover: none)").matches;
+            const li = enlaceSub.parentElement;
+            if (tactil && window.innerWidth > 960 && !li.classList.contains("abierto-sub")) {
+                e.preventDefault();
+                document.querySelectorAll(".tiene-submenu.abierto-sub").forEach(function (x) { x.classList.remove("abierto-sub"); });
+                li.classList.add("abierto-sub");
+            }
+        };
+    });
+
+    // En celular y tablet: el botón ☰ muestra u oculta los enlaces
     document.getElementById("boton-menu").onclick = function () {
         document.getElementById("enlaces").classList.toggle("abierto");
     };
@@ -38,8 +73,8 @@ function crearMenu() {
     };
 }
 
-// 2. REDES SOCIALES: siempre en el pie; en Inicio también una barra a la derecha
-// Cambia los enlaces por los de Colitas Felices Callao
+// 2. REDES SOCIALES: en el pie de cada página (menos Inicio, que ya no tiene pie) y en Inicio una barra a la derecha
+// Cambia los enlaces por los de Felices Colitas Callao
 function crearRedes() {
     const redes = [
         { nombre: "TikTok",   imagen: "tiktok.png",   enlace: "https://www.tiktok.com/" },
@@ -55,7 +90,9 @@ function crearRedes() {
     }
 
     const pie = document.getElementById("pie");
-    pie.innerHTML += `<div class="redes-pie">${iconos}</div>`;
+    if (pie) {
+        pie.innerHTML += `<div class="redes-pie">${iconos}</div>`;
+    }
 
     if (document.body.id === "inicio") {
         document.body.innerHTML += `<div class="redes-lateral">${iconos}</div>`;
@@ -70,7 +107,7 @@ function crearCarrusel() {
     for (let i = 0; i < nombres.length; i++) {
         pista.innerHTML += `
             <div class="tarjeta">
-                <img src="imagenes/mascotas/mascota${i + 1}.jpg" alt="${nombres[i]}">
+                <img src="imagenes/mascotas/mascota${i + 1}.jpg" alt="${nombres[i]}, mascota de un integrante de Felices Colitas Callao">
                 <h3>${nombres[i]}</h3>
             </div>`;
     }
@@ -78,7 +115,7 @@ function crearCarrusel() {
     document.getElementById("flecha-der").onclick = function () { pista.scrollBy({ left: 260, behavior: "smooth" }); };
 }
 
-// 4. COLITAS FELICES: muestra todas las historias
+// 4. FELICES COLITAS: muestra todas las historias
 function crearColitasFelices() {
     const galeria = document.getElementById("galeria");
     if (!galeria) return;
@@ -86,7 +123,7 @@ function crearColitasFelices() {
     for (let i = 0; i < nombres.length; i++) {
         galeria.innerHTML += `
             <div class="historia">
-                <img src="imagenes/mascotas/mascota${i + 1}.jpg" alt="${nombres[i]}">
+                <img src="imagenes/mascotas/mascota${i + 1}.jpg" alt="${nombres[i]}, mascota de un integrante de Felices Colitas Callao">
                 <h3>${nombres[i]}</h3>
                 <p>Escribe aquí la historia de ${nombres[i]} y cómo llegó a su hogar.</p>
             </div>`;

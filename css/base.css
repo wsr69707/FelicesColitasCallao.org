@@ -23,6 +23,14 @@
     --gris-claro: #EEF1F3;       /* fondos suaves */
     --gris-borde: #CFD6DB;       /* borde de los campos del formulario */
     --blanco: #FFFFFF;           /* tarjetas, formularios y letras sobre fondo oscuro */
+    --desplegable: #00BDF2;      /* fondo del menú desplegable (Felices Colitas) */
+}
+
+/* ----- Tamaño de la página: se ve al 100 % (tamaño real) ----- */
+/* Ya no se usa zoom: los tamaños de letra se ajustan solos con clamp() y rem. */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 /* ----- Color del texto y del fondo de la página ----- */

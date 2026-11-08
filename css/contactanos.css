@@ -8,22 +8,106 @@
     background-image: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)), url("../imagenes/hrmns.jpeg");
 }
 
-/* ----- Mapa y formulario ----- */
+/* ----- Formulario (protagonista) y columna lateral ----- */
 .contacto {
-    display: flex;
-    gap: 35px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: clamp(20px, 3vw, 36px);
     max-width: 1100px;
     margin: 0 auto;
-    align-items: flex-start;
+    align-items: start;
 }
 
-.contacto > * {
-    flex: 1;
+/* en esta página el formulario ocupa toda su columna */
+.contacto .formulario {
+    max-width: none;
+    margin: 0;
+}
+
+.contacto-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Texto introductorio: tarjeta ordenada con etiqueta, título y párrafo */
+.intro-contacto {
+    padding: clamp(20px, 3vw, 28px);
+    background: var(--blanco);
+    border-radius: 20px;
+    border-left: 8px solid var(--naranja);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.etiqueta {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 3px 14px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--blanco);
+    background: var(--naranja-oscuro);
+    border-radius: 20px;
+}
+
+.seccion .intro-contacto h2 {
+    text-align: left;
+    max-width: none;
+    margin: 0 0 8px;
+    font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+    color: var(--negro);
+}
+
+.intro-contacto p {
+    color: var(--gris);
 }
 
 .mapa {
     width: 100%;
-    height: 600px;
+    height: clamp(260px, 32vw, 380px);
     border: 0;
     border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo del formulario: completo (sin recortar), en un recuadro blanco y no en un círculo */
+.logo-contacto {
+    width: min(220px, 70%);
+    height: auto;
+    margin: 0 auto 12px;
+}
+
+/* ----- Tarjetas de ayuda ----- */
+.tarjetas-ayuda {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+    gap: 22px;
+    max-width: 1100px;
+    margin: 32px auto 0;
+}
+
+.tarjeta-ayuda {
+    padding: 24px;
+    background: var(--gris-claro);
+    border-radius: 20px;
+    border-top: 6px solid var(--naranja);
+}
+
+.icono-ayuda {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.seccion .tarjeta-ayuda h2 {
+    text-align: left;
+    max-width: none;
+    margin: 0 0 10px;
+    font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+    color: var(--naranja-oscuro);
+}
+
+.tarjeta-ayuda p {
+    margin-bottom: 10px;
 }

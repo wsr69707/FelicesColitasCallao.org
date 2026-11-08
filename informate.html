@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infórmate: Cuidado y Bienestar de Perros y Gatos | Felices Colitas Callao</title>
+    <meta name="description" content="Consejos para cuidar a tu mascota: por qué en diciembre se pierden más perros y gatos por la pirotecnia, vacunas, calor, alimentos peligrosos, identificación y más.">
+    <meta name="keywords" content="Por qué se pierden más mascotas en diciembre, Pirotecnia y mascotas qué hacer, Cómo proteger a mi perro de los fuegos artificiales, Cuidado de perros y gatos en Callao, Vacunas para perros y gatos, Qué alimentos no pueden comer los perros, Cómo cuidar a mi mascota del calor, Importancia de la placa y el microchip, Esterilización de perros y gatos">
+    <meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/estructura.css" rel="stylesheet">
+    <link href="css/informate.css" rel="stylesheet">
+    <link href="css/adaptable.css" rel="stylesheet">
+</head>
+<body>
+<div class="cabecera">
+    <div id="menu"></div>
+    <div class="portada portada-chica portada-informate">
+        <h1>Infórmate para cuidar mejor a tu mascota</h1>
+        <p>Felices Colitas Blog: consejos sencillos para el cuidado y el bienestar de perros y gatos</p>
+    </div>
+</div>
+
+<!-- ================= DESTACADO: DICIEMBRE ================= -->
+<section class="seccion fondo-oscuro" id="diciembre">
+    <span class="etiqueta-destacada">Entrada destacada</span>
+    <h2>Diciembre: el mes en que más mascotas se pierden</h2>
+    <p class="subtitulo">La pirotecnia asusta a perros y gatos. Con unos cuidados a tiempo, puedes evitar que tu mascota se escape.</p>
+
+    <div class="diciembre">
+        <div class="columna-texto">
+            <h3>¿Por qué se pierden más en Navidad y Año Nuevo?</h3>
+            <p>Perros y gatos oyen sonidos más fuertes y más agudos que las personas. Para ellos, los cohetes y los fuegos artificiales son un estruendo imposible de entender, y la reacción natural es huir.</p>
+            <p>En ese pánico pueden saltar rejas, romper la correa o salir corriendo por una puerta abierta. A eso se suman las fiestas y las visitas, con puertas que se abren y se cierran sin parar. Por eso las organizaciones de rescate suelen recibir más avisos de mascotas extraviadas en estas fechas.</p>
+            <p>Un animal asustado puede correr muchas cuadras sin parar y esconderse en lugares que no conoce. Cuanto antes lo busques, más fácil será encontrarlo.</p>
+
+            <h3>Si tu mascota se pierde</h3>
+            <ol class="pasos-lista">
+                <li><b>Sal a buscarla enseguida,</b> en calma. Revisa debajo de autos, cocheras, terrenos y azoteas: los animales asustados se esconden.</li>
+                <li><b>Avisa a tus vecinos,</b> a los vigilantes y a las tiendas de la zona. Muestra una foto reciente.</li>
+                <li><b>Revisa los reportes</b> de mascotas encontradas y publica un aviso con su foto.</li>
+            </ol>
+            <div class="botones-fila">
+                <a href="mascotas-perdidas-callao.html" class="boton">Buscar a mi mascota</a>
+                <a href="reportar-mascota.html" class="boton boton-celeste">Reportar una mascota</a>
+            </div>
+        </div>
+
+        <div class="lista-previa" id="listaPrevia">
+            <h3>Prepárate antes del 24 y del 31</h3>
+            <p class="ayuda-lista">Marca lo que ya hiciste.</p>
+            <ul>
+                <li><label><input type="checkbox"><span><b>Placa con su nombre y tu celular.</b> Si puedes, añade microchip.</span></label></li>
+                <li><label><input type="checkbox"><span><b>Foto reciente</b> de frente y de perfil, guardada en tu celular.</span></label></li>
+                <li><label><input type="checkbox"><span><b>Un cuarto seguro,</b> dentro de casa, con su cama, agua y ventanas cerradas.</span></label></li>
+                <li><label><input type="checkbox"><span><b>Ruido de fondo:</b> música o televisión a volumen medio para tapar los estruendos.</span></label></li>
+                <li><label><input type="checkbox"><span><b>Paseo temprano,</b> antes de que oscurezca, con correa y arnés bien ajustados.</span></label></li>
+                <li><label><input type="checkbox"><span><b>Nunca atado</b> en la azotea, el patio o la calle durante los fuegos artificiales.</span></label></li>
+                <li><label><input type="checkbox"><span><b>Puertas controladas</b> durante las reuniones. Avisa a tus invitados.</span></label></li>
+                <li><label><input type="checkbox"><span><b>Consulta al veterinario</b> si se asusta mucho. No le des medicinas sin su indicación.</span></label></li>
+            </ul>
+            <div class="progreso" aria-live="polite"><div class="barra"><i id="barraPrevia"></i></div><span id="textoPrevia">0 de 8 listos</span></div>
+            <p class="aparte">También puedes pedir a tus vecinos que eviten la pirotecnia cerca de los animales.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= MÁS TEMAS ================= -->
+<section class="seccion fondo-celeste" id="temas">
+    <h2>Más para cuidar a tu mascota</h2>
+    <p class="subtitulo">Elige un tema y toca “Leer más” para ver los consejos.</p>
+
+    <div class="filtros-blog" role="group" aria-label="Filtrar por tema">
+        <button type="button" class="filtro-tema" data-tema="todos" aria-pressed="true">Todos</button>
+        <button type="button" class="filtro-tema" data-tema="salud" aria-pressed="false">Salud</button>
+        <button type="button" class="filtro-tema" data-tema="alimentacion" aria-pressed="false">Alimentación</button>
+        <button type="button" class="filtro-tema" data-tema="seguridad" aria-pressed="false">Seguridad</button>
+        <button type="button" class="filtro-tema" data-tema="gatos" aria-pressed="false">Gatos</button>
+        <button type="button" class="filtro-tema" data-tema="bienestar" aria-pressed="false">Bienestar</button>
+        <button type="button" class="filtro-tema" data-tema="comunidad" aria-pressed="false">Comunidad</button>
+    </div>
+
+    <div class="notas" id="notas">
+
+        <article class="nota" data-tema="salud">
+            <div class="nota-icono" aria-hidden="true">💉</div>
+            <span class="tema">Salud</span>
+            <h3>Vacunas y desparasitación al día</h3>
+            <p>Las vacunas y las pastillas antiparasitarias protegen a tu mascota de enfermedades graves y evitan que contagie a otros animales.</p>
+            <details>
+                <summary>Leer más</summary>
+                <ul>
+                    <li>Los cachorros y gatitos empiezan su esquema de vacunas siendo muy pequeños y necesitan refuerzos. Tu veterinario te indicará las fechas.</li>
+                    <li>La vacuna antirrábica se aplica a perros y gatos. Pregunta en tu municipalidad o centro de salud cuándo es la próxima campaña en tu distrito.</li>
+                    <li>Desparasita por dentro y por fuera (pulgas y garrapatas) con la frecuencia que te indique el veterinario.</li>
+                    <li>Lleva a tu mascota a un control una vez al año, aunque se vea sana.</li>
+                </ul>
+            </details>
+        </article>
+
+        <article class="nota" data-tema="seguridad">
+            <div class="nota-icono" aria-hidden="true">🏷️</div>
+            <span class="tema">Seguridad</span>
+            <h3>Placa, microchip y una buena foto</h3>
+            <p>Una mascota identificada vuelve a casa mucho más rápido. Es lo más sencillo que puedes hacer hoy.</p>
+            <details>
+                <summary>Leer más</summary>
+                <ul>
+                    <li>Usa una placa con el nombre de tu mascota y tu número de celular. Cámbiala si se borra.</li>
+                    <li>El microchip lo coloca un veterinario y no se cae ni se pierde. Mantén tus datos actualizados.</li>
+                    <li>Guarda en tu celular fotos recientes de frente, de perfil y de sus manchas o señas particulares.</li>
+                    <li>Revisa el collar y el arnés con frecuencia: que no estén flojos ni rotos.</li>
+                </ul>
+            </details>
+        </article>
+
+        <article class="nota" data-tema="bienestar">
+            <div class="nota-icono" aria-hidden="true">☀️</div>
+            <span class="tema">Bienestar</span>
+            <h3>Calor y paseos en verano</h3>
+            <p>El calor y la humedad pueden agotar a perros y gatos más rápido de lo que imaginas. Adapta sus paseos y cuida su agua.</p>
+            <details>
+                <summary>Leer más</summary>
+                <ul>
+                    <li>Pasea temprano o al atardecer, y evita el mediodía.</li>
+                    <li>Toca el pavimento con el dorso de tu mano: si no aguantas 5 segundos, quema sus almohadillas.</li>
+                    <li>Deja siempre agua fresca y un lugar con sombra.</li>
+                    <li>Nunca lo dejes dentro de un auto, ni un momento: se calienta muy rápido.</li>
+                    <li>Si jadea mucho, babea espeso, está decaído o vomita, llévalo de inmediato al veterinario.</li>
+                    <li>Los perros y gatos de hocico corto, como el bulldog, el pug o el gato persa, sufren más con el calor.</li>
+                </ul>
+            </details>
+        </article>
+
+        <article class="nota" data-tema="alimentacion">
+            <div class="nota-icono" aria-hidden="true">🍫</div>
+            <span class="tema">Alimentación</span>
+            <h3>Alimentos que no deben comer</h3>
+            <p>Algunos alimentos que son comunes en casa pueden intoxicar a perros y gatos. Mantenlos fuera de su alcance.</p>
+            <details>
+                <summary>Leer más</summary>
+                <ul>
+                    <li>Peligrosos: chocolate, uvas y pasas, cebolla, ajo, café, alcohol y el edulcorante xilitol (presente en algunos chicles y dulces).</li>
+                    <li>Los huesos cocidos se astillan y pueden herir su garganta o su estómago.</li>
+                    <li>Para los gatos, los lirios son muy tóxicos, incluso en pequeñas cantidades.</li>
+                    <li>Si crees que comió algo peligroso, llama al veterinario enseguida, antes de que aparezcan los síntomas.</li>
+                    <li>Elige un alimento adecuado a su edad y tamaño, y no cambies su comida de golpe.</li>
+                </ul>
+            </details>
+        </article>
+
+        <article class="nota" data-tema="salud">
+            <div class="nota-icono" aria-hidden="true">✂️</div>
+            <span class="tema">Salud</span>
+            <h3>Esterilizar también es cuidar</h3>
+            <p>La esterilización evita camadas no deseadas, que son una de las causas del abandono, y ayuda a prevenir algunas enfermedades.</p>
+            <details>
+                <summary>Leer más</summary>
+                <ul>
+                    <li>Consulta con tu veterinario cuál es la mejor edad para tu mascota.</li>
+                    <li>Los animales sin esterilizar tienden a escaparse más para buscar pareja.</li>
+                    <li>Algunas municipalidades y organizaciones realizan campañas de esterilización a bajo costo. Pregunta en la tuya.</li>
+                </ul>
+            </details>
+        </article>
+
+        <article class="nota" data-tema="gatos">
+            <div class="nota-icono" aria-hidden="true">🐱</div>
+            <span class="tema">Gatos</span>
+            <h3>Gatos seguros en casa</h3>
+            <p>Los gatos son curiosos y saltarines. En departamentos y casas con ventanas, un descuido puede terminar en una caída.</p>
+            <details>
+                <summary>Leer más</summary>
+                <ul>
+                    <li>Coloca mallas de protección en ventanas y balcones; nunca dejes ventanas abiertas sin ellas.</li>
+                    <li>Dale un rascador, lugares altos para trepar y juguetes para que no se aburra.</li>
+                    <li>Mantén el arenero limpio y en un lugar tranquilo.</li>
+                    <li>Aunque viva dentro de casa, ponle placa: se puede escapar en un descuido.</li>
+                </ul>
+            </details>
+        </article>
+
+        <article class="nota" data-tema="bienestar">
+            <div class="nota-icono" aria-hidden="true">🎾</div>
+            <span class="tema">Bienestar</span>
+            <h3>Paseo, juego y compañía</h3>
+            <p>Las mascotas necesitan ejercicio, juego y cariño todos los días. Una mascota aburrida o sola puede mostrarlo con ladridos, maullidos o destrozos.</p>
+            <details>
+                <summary>Leer más</summary>
+                <ul>
+                    <li>Si tienes perro, sácalo a pasear todos los días, con correa; si tienes gato, juega con él a diario. La cantidad de ejercicio depende de su edad, su tamaño y su energía.</li>
+                    <li>Dedica un rato diario al juego: pelotas, juguetes que se puedan morder o juegos de olfato.</li>
+                    <li>Evita dejarla sola durante muchas horas seguidas.</li>
+                    <li>Los destrozos, los ladridos o maullidos sin parar o la tristeza pueden ser señales de aburrimiento o ansiedad. Consulta al veterinario si continúan.</li>
+                </ul>
+            </details>
+        </article>
+
+        <article class="nota" data-tema="comunidad">
+            <div class="nota-icono" aria-hidden="true">🤝</div>
+            <span class="tema">Comunidad</span>
+            <h3>Si ves un animal solo en la calle</h3>
+            <p>Un gesto pequeño puede cambiarle la vida. Ayudar con cuidado también te protege a ti.</p>
+            <details>
+                <summary>Leer más</summary>
+                <ul>
+                    <li>Acércate con calma, sin gritos ni movimientos bruscos. Un animal asustado o herido puede morder.</li>
+                    <li>Ofrécele agua y revisa si tiene collar o placa con un teléfono.</li>
+                    <li>Toma una foto clara y anota el lugar exacto donde lo viste.</li>
+                    <li>Repórtalo en <a href="reportar-mascota.html">Reportar una mascota</a> para que su familia pueda encontrarlo.</li>
+                    <li>Si sospechas maltrato, consulta cómo denunciarlo en <a href="contactanos.html">Contáctanos</a>.</li>
+                </ul>
+            </details>
+        </article>
+    </div>
+
+    <p class="sin-resultados" id="sinNotas" hidden>No hay entradas en este tema por ahora.</p>
+
+    <p class="aviso-vet">Esta información es orientativa y no reemplaza la consulta con un veterinario. Si tu mascota está enferma o herida, acude a uno cuanto antes.</p>
+</section>
+
+<section class="seccion fondo-blanco">
+    <h2>¿Tienes una duda o quieres aportar?</h2>
+    <p class="texto-centro">Cuéntanos qué tema te gustaría ver en el blog o comparte tu experiencia cuidando a tu mascota.</p>
+    <div class="centro">
+        <a href="contactanos.html" class="boton">Escríbenos</a>
+        <a href="historias-mascotas-felices.html" class="boton boton-celeste">Ver historias felices</a>
+    </div>
+</section>
+
+<div class="pie" id="pie">
+    <p><strong>Una mascota no es solo compañía, es parte de la familia.</strong>
+    Cuidemos, valoremos y protejamos a quienes siempre están a nuestro lado. 🐾❤️</p>
+</div>
+<script src="js/informate.js"></script>
+<script src="js/menu.js"></script>
+</body>
+</html>

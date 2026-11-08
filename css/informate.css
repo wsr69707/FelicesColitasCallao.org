@@ -1,0 +1,181 @@
+/* ==========================================================
+   PÁGINA INFÓRMATE      Lo usan: informate.html
+   Contiene, en este orden: portada, entrada destacada de diciembre, lista de preparación,
+   filtro por tema, entradas del blog y aviso.
+   Los colores salen de base.css con var(--nombre).
+   ========================================================== */
+
+[hidden] { display: none !important; }
+
+/* ----- Portada ----- */
+.portada-informate {
+    background-image: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)), url("../imagenes/perros-rescatados-hogar-callao.jpg");
+}
+
+/* ----- Entrada destacada: diciembre ----- */
+.fondo-oscuro { color: var(--blanco); background: var(--negro); text-align: center; }
+.fondo-oscuro h2 { color: var(--blanco); }
+.fondo-oscuro .subtitulo { color: var(--celeste); max-width: 760px; margin: 0 auto 10px; }
+
+.etiqueta-destacada {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 4px 16px;
+    font-weight: 800;
+    color: var(--blanco);
+    background: var(--naranja-oscuro);
+    border-radius: 20px;
+}
+
+.diciembre {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+    max-width: 1100px;
+    margin: 36px auto 0;
+    text-align: left;
+}
+
+.columna-texto h3 { margin: 26px 0 8px; font-size: 27px; color: var(--celeste); }
+.columna-texto h3:first-child { margin-top: 0; }
+.columna-texto p { margin-bottom: 12px; }
+
+.pasos-lista { list-style: none; counter-reset: paso; display: flex; flex-direction: column; gap: 12px; }
+.pasos-lista li { position: relative; padding-left: 46px; counter-increment: paso; }
+.pasos-lista li::before {
+    content: counter(paso);
+    position: absolute;
+    left: 0; top: -2px;
+    width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 800;
+    color: var(--blanco);
+    background: var(--naranja-oscuro);
+    border-radius: 50%;
+}
+
+.botones-fila { margin-top: 22px; }
+.botones-fila .boton { margin: 6px 12px 6px 0; }
+.fondo-oscuro .boton:hover { background: var(--blanco); color: var(--negro); }
+
+/* ----- Lista de preparación ----- */
+.lista-previa {
+    padding: 28px;
+    color: var(--negro);
+    background: var(--blanco);
+    border-radius: 22px;
+    border-top: 8px solid var(--naranja);
+}
+.lista-previa h3 { font-size: 27px; }
+.ayuda-lista { margin-bottom: 14px; color: var(--gris); }
+.lista-previa ul { display: flex; flex-direction: column; gap: 10px; }
+.lista-previa label { display: flex; gap: 12px; align-items: flex-start; padding: 8px 10px; border-radius: 12px; cursor: pointer; }
+.lista-previa label:hover { background: var(--gris-claro); }
+.lista-previa input { width: 22px; height: 22px; flex: none; margin-top: 3px; accent-color: var(--naranja-oscuro); }
+.lista-previa input:checked + span { color: var(--gris); }
+.lista-previa input:focus-visible { outline: 3px solid var(--celeste-oscuro); outline-offset: 2px; }
+
+.progreso { display: flex; align-items: center; gap: 12px; margin-top: 18px; font-weight: 800; }
+.barra { flex: 1; height: 14px; overflow: hidden; background: var(--gris-claro); border-radius: 10px; }
+.barra i { display: block; width: 0; height: 100%; background: var(--naranja); border-radius: 10px; transition: width .25s; }
+.lista-previa .aparte { margin-top: 14px; padding-top: 12px; font-size: 15px; color: var(--gris); border-top: 2px solid var(--gris-claro); }
+
+/* ----- Filtro por tema ----- */
+.filtros-blog { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 24px auto 0; max-width: 900px; }
+
+.filtro-tema {
+    padding: 8px 20px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--negro);
+    background: var(--blanco);
+    border: 2px solid var(--blanco);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .15s;
+}
+.filtro-tema:hover { border-color: var(--naranja); }
+.filtro-tema[aria-pressed="true"] { color: var(--blanco); background: var(--naranja-oscuro); border-color: var(--naranja-oscuro); }
+.filtro-tema:focus-visible, .nota summary:focus-visible { outline: 3px solid var(--negro); outline-offset: 2px; }
+
+/* ----- Entradas del blog ----- */
+.notas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 30px auto 0;
+}
+
+.nota {
+    padding: 22px;
+    background: var(--blanco);
+    border-radius: 20px;
+    border-bottom: 6px solid var(--naranja);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.nota-icono {
+    width: 58px; height: 58px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
+    font-size: 30px;
+    background: var(--celeste);
+    border-radius: 50%;
+}
+
+.tema {
+    display: inline-block;
+    padding: 1px 12px;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--naranja-oscuro);
+    background: var(--gris-claro);
+    border-radius: 20px;
+}
+
+.nota h3 { margin: 8px 0 6px; font-size: 24px; color: var(--naranja-oscuro); }
+.nota p { font-size: 15px; color: var(--gris); }
+
+.nota summary {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 18px;
+    font-weight: 800;
+    color: var(--blanco);
+    background: #2F86AE;
+    border-radius: 20px;
+    cursor: pointer;
+    list-style: none;
+}
+.nota summary::-webkit-details-marker { display: none; }
+.nota summary:hover { background: var(--negro); }
+.nota details[open] summary { background: var(--negro); }
+.nota details[open] summary::before { content: "Cerrar"; }
+.nota details[open] summary { font-size: 0; }
+.nota details[open] summary::before { font-size: 16px; }
+
+.nota ul { display: flex; flex-direction: column; gap: 9px; margin-top: 14px; }
+.nota li { position: relative; padding-left: 20px; font-size: 15px; }
+.nota li::before { content: ""; position: absolute; left: 0; top: 9px; width: 9px; height: 9px; border-radius: 50%; background: var(--naranja); }
+.nota li a { color: var(--naranja-oscuro); font-weight: 800; text-decoration: underline; }
+
+.sin-resultados { margin-top: 24px; text-align: center; font-weight: 800; color: var(--gris); }
+.aviso-vet { max-width: 760px; margin: 34px auto 0; text-align: center; font-size: 14px; color: var(--gris); }
+
+/* ----- Pantallas pequeñas ----- */
+@media (max-width: 960px) {
+    .diciembre { grid-template-columns: 1fr; }
+    .notas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+    .notas { grid-template-columns: 1fr; }
+    .lista-previa { padding: 20px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+}

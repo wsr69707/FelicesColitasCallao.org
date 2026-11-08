@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportar una Mascota Encontrada en Callao | Felices Colitas</title>
+    <meta name="description" content="¿Encontraste un perro o gato en la calle en el Callao? Repórtalo con una foto y el lugar donde lo viste para que su familia pueda encontrarlo.">
+    <meta name="keywords" content="Qué hacer si encuentro un perro perdido en Callao, Reportar una mascota encontrada en Callao, Perros encontrados en Ventanilla esta semana, Cómo publicar un aviso de mascota encontrada">
+    <meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/estructura.css" rel="stylesheet">
+    <link href="css/reportar.css" rel="stylesheet">
+    <link href="css/adaptable.css" rel="stylesheet">
+</head>
+<body>
+<div class="cabecera">
+    <div id="menu"></div>
+    <div class="portada portada-chica portada-reportar">
+        <h1>Reporta una mascota que encontraste</h1>
+        <p>Una foto y unos datos sencillos pueden devolverla a casa</p>
+    </div>
+</div>
+
+<section class="seccion fondo-celeste">
+  <div class="reportar">
+
+    <!-- ================= FORMULARIO ================= -->
+    <div class="tarjeta-reporte">
+      <form id="formReporte" novalidate autocomplete="off">
+        <h2>Cuéntanos qué encontraste</h2>
+        <p class="intro">Solo te tomará un minuto. Los campos con <b class="req">*</b> son necesarios.</p>
+
+        <div class="campo" id="campoFoto">
+          <h3>Foto de la mascota <b class="req">*</b></h3>
+          <label class="zona-subir" id="zonaSubir">
+            <input type="file" id="archivoFoto" accept="image/*">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="10" width="52" height="44" rx="8" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="22" cy="25" r="5" fill="currentColor"/><path d="M8 48l16-15 10 9 9-8 13 12" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <strong>Toca para tomar o elegir una foto</strong>
+            <span>Que se vea todo su cuerpo, con buena luz</span>
+          </label>
+          <div class="vista-foto" id="vistaFoto" hidden>
+            <img id="fotoPrevia" alt="Foto de la mascota que encontraste">
+            <div class="pie-foto">
+              <div class="colores" id="colores" aria-label="Colores detectados"></div>
+              <button type="button" class="herr suave" id="btnCambiarFoto">Cambiar foto</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="campo">
+          <h3>¿Qué animal es? <b class="req">*</b></h3>
+          <div class="pastillas dos" role="group" aria-label="Tipo de animal">
+            <button type="button" class="pastilla" data-grupo="tipo" data-valor="perro" aria-pressed="true">🐶 Perro</button>
+            <button type="button" class="pastilla" data-grupo="tipo" data-valor="gato" aria-pressed="false">🐱 Gato</button>
+          </div>
+        </div>
+
+        <div class="campo">
+          <h3>¿De qué tamaño es? <b class="req">*</b></h3>
+          <div class="pastillas tres" role="group" aria-label="Tamaño">
+            <button type="button" class="pastilla" data-grupo="tamano" data-valor="pequeno" aria-pressed="false">Pequeño<small>Cabe en brazos</small></button>
+            <button type="button" class="pastilla" data-grupo="tamano" data-valor="mediano" aria-pressed="false">Mediano</button>
+            <button type="button" class="pastilla" data-grupo="tamano" data-valor="grande" aria-pressed="false">Grande<small>Llega a la cintura o más</small></button>
+          </div>
+        </div>
+
+        <div class="campo dos-columnas">
+          <div>
+            <label for="distrito"><h3>Distrito del Callao <b class="req">*</b></h3></label>
+            <select id="distrito" required></select>
+          </div>
+          <div>
+            <label for="fecha"><h3>¿Cuándo la encontraste? <b class="req">*</b></h3></label>
+            <input type="date" id="fecha" required>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="lugar"><h3>¿En qué lugar la viste? <b class="req">*</b></h3></label>
+          <input type="text" id="lugar" maxlength="120" placeholder="Calle, parque, paradero o un lugar conocido" required>
+        </div>
+
+        <div class="campo">
+          <label for="nota"><h3>¿Cómo es? <span class="opcional">(opcional)</span></h3></label>
+          <textarea id="nota" maxlength="200" placeholder="Ej: manchas blancas en el pecho, una oreja caída, muy tranquilo…"></textarea>
+          <label class="casilla"><input type="checkbox" id="collar"> Tenía collar o placa</label>
+        </div>
+
+        <div class="campo contacto">
+          <h3>Para que su familia te escriba</h3>
+          <div class="dos-columnas">
+            <div>
+              <label for="nombre">Tu nombre <span class="opcional">(opcional)</span></label>
+              <input type="text" id="nombre" maxlength="40" placeholder="Ej: María">
+            </div>
+            <div>
+              <label for="telefono">Tu WhatsApp o celular <b class="req">*</b></label>
+              <input type="tel" id="telefono" inputmode="numeric" maxlength="11" placeholder="987 654 321" required>
+            </div>
+          </div>
+          <label class="casilla"><input type="checkbox" id="acepto"> Acepto que mi celular se muestre en el reporte, solo para que la familia pueda contactarme. <b class="req">*</b></label>
+        </div>
+
+        <input type="text" id="web" name="web" class="trampa" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <p class="error" id="error" role="alert" hidden></p>
+        <button type="submit" class="boton" id="btnEnviar">Enviar reporte</button>
+      </form>
+
+      <div class="gracias" id="gracias" hidden>
+        <div class="gracias-icono" aria-hidden="true">🐾</div>
+        <h2>¡Gracias por ayudar!</h2>
+        <p id="graciasTexto">Tu reporte ya está publicado. Si su familia la está buscando, podrá encontrarla.</p>
+        <div class="acciones">
+          <a href="mascotas-perdidas-callao.html" class="boton">Ver mascotas perdidas</a>
+          <button type="button" class="boton boton-celeste" id="btnOtro">Reportar otra mascota</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= CONSEJOS ================= -->
+    <aside class="consejos" aria-label="Qué hacer si encuentras una mascota">
+      <h3>Si encuentras a una mascota</h3>
+      <ul>
+        <li><b>Acércate con calma.</b> No la persigas: háblale suave y deja que se acerque.</li>
+        <li><b>Dale agua</b> y revisa si tiene collar o placa con un teléfono.</li>
+        <li><b>Toma una foto clara</b> donde se vea todo su cuerpo.</li>
+        <li><b>Anota el lugar exacto</b> donde la viste; ayuda mucho a su familia.</li>
+        <li><b>Si está herida,</b> llévala a un veterinario o pide ayuda a un albergue.</li>
+      </ul>
+      <p class="aparte">¿Buscas a tu propia mascota? <a href="mascotas-perdidas-callao.html">Revisa los reportes del Callao</a>.</p>
+    </aside>
+  </div>
+</section>
+
+<div class="pie" id="pie">
+    <p><strong>Una mascota no es solo compañía, es parte de la familia.</strong>
+    Cuidemos, valoremos y protejamos a quienes siempre están a nuestro lado. 🐾❤️</p>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="js/config.js"></script>
+<script src="js/mascota-svg.js"></script>
+<script src="js/reportes.js"></script>
+<script src="js/reportar.js"></script>
+<script src="js/menu.js"></script>
+</body>
+</html>

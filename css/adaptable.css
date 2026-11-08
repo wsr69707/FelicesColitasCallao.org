@@ -9,30 +9,42 @@
    Si la pantalla es más ancha, esos estilos se ignoran.
    Este archivo se carga al final para que sus reglas ganen sobre las demás.
 
-   LOS DOS TAMAÑOS QUE USAMOS
-       Más de 768px   →  computadora (no cambia nada, se ve el diseño normal)
-       768px o menos  →  tablet y celular
+   La página se ve al 100 %. Los tamaños de letra de títulos y portadas se ajustan solos
+   (clamp en estructura.css), así que aquí solo se cambia la distribución.
+
+   LOS TAMAÑOS QUE USAMOS
+       Más de 960px   →  computadora (menú completo)
+       960px o menos  →  menú con botón ☰ (tablet y celular)
+       768px o menos  →  tablet vertical y celular: columnas una debajo de otra
        480px o menos  →  celular pequeño
 
    CÓMO EXPLICARLO CON F12
        1. Abre la página en Chrome y presiona F12.
        2. Presiona Ctrl+Shift+M para abrir el visor de tamaños.
-       3. Arrastra el ancho: cuando pase de 769px a 768px, mira cómo cambia todo.
-       4. Haz clic derecho sobre un elemento > Inspeccionar: en "Styles" verás la regla
-          @media (max-width: 768px) con lo que se aplicó.
-
-   ORDEN DE ESTE ARCHIVO (cada bloque dice a qué página afecta)
-       Bloque 1: 768px  →  menú, portadas, columnas, Inicio, Quiénes somos, Colitas Felices, Contáctanos, pie
-       Bloque 2: 480px  →  portadas, botones, Inicio, Colitas Felices, formularios
+       3. Arrastra el ancho y mira cómo cambia todo al pasar por 960px, 768px y 480px.
 */
 
 
 /* ==========================================================
-   BLOQUE 1: tablet y celular (768px o menos)
+   BLOQUE 0: pantallas muy grandes (1600px o más)
    ========================================================== */
-@media (max-width: 768px) {
+@media (min-width: 1600px) {
+    .seccion {
+        padding-left: 8%;
+        padding-right: 8%;
+    }
+}
 
-    /* ----- Menú (todas las páginas): los enlaces se esconden y aparece el botón ☰ ----- */
+
+/* ==========================================================
+   BLOQUE 1: menú con botón ☰ (960px o menos)
+   ========================================================== */
+@media (max-width: 960px) {
+
+    .menu {
+        flex-wrap: wrap;
+    }
+
     .boton-menu {
         display: block;
     }
@@ -43,7 +55,9 @@
         top: 100%;
         left: 0;
         right: 0;
-        background: rgba(30, 35, 40, 0.95);
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
+        background: rgba(30, 35, 40, 0.97);
     }
 
     /* JS agrega la clase "abierto" al tocar ☰ y los enlaces se muestran */
@@ -53,35 +67,57 @@
 
     .enlaces ul {
         flex-direction: column;
-        padding: 10px 6%;
+        gap: 2px;
+        padding: 10px 5%;
     }
 
-    /* ----- Portadas y títulos (todas las páginas): letras más pequeñas ----- */
-    .portada h1 {
-        font-size: 48px;
+    .enlaces a {
+        padding: 11px 14px;
     }
 
-    .portada p {
-        font-size: 18px;
+    /* Menú desplegable: en celular queda abierto, dentro de la lista */
+    .submenu {
+        display: block;
+        position: static;
+        min-width: 0;
+        margin: 4px 0 6px 12px;
+        padding: 6px;
+        box-shadow: none;
+        border-radius: 16px;
     }
 
-    .portada-mediana h1 {
-        font-size: 36px;
+    .enlaces .submenu a {
+        padding: 9px 12px;
     }
 
-    .portada-chica h1 {
-        font-size: 34px;
+    /* La barra lateral de redes (solo Inicio) estorba en pantallas chicas: se oculta.
+       Las redes siguen disponibles en el pie de página. */
+    .redes-lateral {
+        display: none;
+    }
+}
+
+
+/* ==========================================================
+   BLOQUE 2: tablet vertical y celular (768px o menos)
+   ========================================================== */
+@media (max-width: 768px) {
+
+    .portada {
+        padding: 130px 5% 40px;
+    }
+
+    .portada-chica {
+        min-height: 240px;
+        padding-top: 130px;
     }
 
     .seccion {
-        padding: 50px 5%;
+        padding-left: 5%;
+        padding-right: 5%;
     }
 
-    .seccion h2 {
-        font-size: 30px;
-    }
-
-    /* ----- Columnas (todas las páginas): lo que estaba lado a lado pasa uno debajo de otro ----- */
+    /* Columnas: lo que estaba lado a lado pasa uno debajo de otro */
     .fila {
         flex-direction: column;
     }
@@ -89,20 +125,15 @@
     .equipo {
         flex-direction: column;
         align-items: center;
-        gap: 30px;
     }
 
-    /* ----- Inicio ----- */
-    .video {
-        height: 220px;
+    .perfil {
+        flex: 0 1 auto;
     }
 
-    .tarjeta {
-        min-width: 180px;
-    }
-
-    .tarjeta img {
-        height: 180px;
+    /* Inicio: las fotos se hacen más bajas */
+    .foto {
+        height: 240px;
     }
 
     .flecha-izq {
@@ -113,41 +144,22 @@
         right: 0;
     }
 
-    /* ----- Inicio y Quiénes somos: las fotos se hacen más bajas ----- */
-    .foto {
-        height: 260px;
-    }
-
-    /* ----- Quiénes somos ----- */
-    /* La foto siempre queda arriba del texto, también en el bloque invertido */
+    /* Quiénes somos: la foto siempre queda arriba del texto, también en el bloque invertido */
     .fila-invertida {
         flex-direction: column-reverse;
     }
 
     .fila-nosotros h3 {
-        font-size: 24px;
+        font-size: 1.5rem;
     }
 
-    /* ----- Colitas Felices: la galería pasa de 4 columnas a 2 ----- */
-    .galeria {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-    }
 
-    .historia img {
-        height: 150px;
-    }
-
-    /* ----- Contáctanos: el mapa y el formulario pasan uno debajo del otro ----- */
+    /* Contáctanos: el formulario va primero y la columna lateral (texto y mapa) debajo */
     .contacto {
-        flex-direction: column;
+        grid-template-columns: minmax(0, 1fr);
     }
 
-    .mapa {
-        height: 300px;
-    }
-
-    /* ----- Pie de página (todas las páginas) ----- */
+    /* Pie de página */
     .pie {
         flex-direction: column;
         text-align: center;
@@ -156,55 +168,59 @@
     .redes-pie {
         justify-content: center;
     }
-
-    /* La barra lateral de redes (solo Inicio) estorba en celular: se oculta.
-       Las redes siguen disponibles en el pie de página. */
-    .redes-lateral {
-        display: none;
-    }
 }
 
 
 /* ==========================================================
-   BLOQUE 2: celular pequeño (480px o menos)
+   BLOQUE 3: celular pequeño (480px o menos)
    ========================================================== */
 @media (max-width: 480px) {
 
-    /* ----- Portadas y botones (todas las páginas) ----- */
-    .portada h1 {
-        font-size: 36px;
-    }
-
-    .portada-mediana h1,
-    .portada-chica h1 {
-        font-size: 28px;
-    }
-
-    .seccion h2 {
-        font-size: 26px;
-    }
-
     .boton {
-        font-size: 18px;
+        font-size: 1rem;
         padding: 10px 22px;
     }
 
-    /* ----- Inicio: los íconos pasan de 2 columnas a 1 ----- */
+    .logo {
+        height: 64px;
+    }
+
+    /* Inicio: los íconos pasan de 2 columnas a 1 */
     .iconos {
         grid-template-columns: 1fr;
     }
 
-    /* ----- Colitas Felices: la galería pasa de 2 columnas a 1 ----- */
+    /* Historias felices: la galería queda en 2 columnas pequeñas hasta 360px */
     .galeria {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
     }
 
-    .historia img {
-        height: 240px;
+    .historia {
+        padding: 8px;
     }
 
-    /* ----- Formularios (Iniciar sesión, Registro y Contáctanos): menos espacio interior ----- */
+    .historia h3 {
+        font-size: 1.1rem;
+    }
+
+    .historia p {
+        font-size: 0.85rem;
+    }
+
+    /* Formularios (Iniciar sesión, Registro y Contáctanos): menos espacio interior */
     .formulario {
         padding: 20px;
     }
+
+    .tarjeta-ayuda {
+        padding: 18px;
+    }
 }
+
+@media (max-width: 360px) {
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+}
+

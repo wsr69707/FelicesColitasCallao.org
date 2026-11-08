@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo Encontrar a Tu Mascota Perdida en Callao</title>
+<meta name="description" content="¿Se perdió tu mascota? Busca a tu mascota entre los reportes del Callao subiendo una foto o dibujando una maqueta, y aprende qué hacer para reencontrarte con ella.">
+<meta name="keywords" content="Cómo encontrar a mi mascota perdida en Callao, Qué hacer si se pierde mi perro en Callao, Qué hacer si encuentro un perro perdido en Callao, Cómo identificar a mi mascota mediante una placa, Cómo encontrar a mi mascota perdida en Ventanilla, Perro perdido en Bellavista Callao qué hacer, Dónde buscar a un perro extraviado cerca de mi casa, Perros encontrados en Ventanilla esta semana, Cómo publicar un aviso de mascota perdida">
+<meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/estructura.css" rel="stylesheet">
+    <link href="css/buscar.css" rel="stylesheet">
+    <link href="css/adaptable.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="cabecera">
+    <div id="menu"></div>
+    <div class="portada portada-chica portada-busqueda">
+        <h1>Cómo encontrar a mi mascota perdida en Callao</h1>
+        <p>Busquemos juntos a tu fiel amigo de 4 patas</p>
+    </div>
+</div>
+
+<!-- ================= ELEGIR CÓMO BUSCAR ================= -->
+<section class="seccion fondo-celeste" id="buscar">
+  <h2>¿Cómo quieres buscar a tu mascota?</h2>
+  <p class="subtitulo">Elige una opción y compararemos con los reportes de mascotas encontradas en el Callao.</p>
+
+  <div class="opciones" role="group" aria-label="Formas de buscar">
+    <button type="button" class="opcion opcion-maqueta" id="opcMaqueta" aria-pressed="false" aria-controls="zonaBusqueda">
+      <span class="opcion-icono" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><path d="M32 6C17 6 6 17 6 31c0 13 9 25 22 26 5 .3 6-3 4-6-2-4 1-8 6-8h8c6 0 12-4 12-11C58 15 47 6 32 6z" fill="#fff" stroke="#1E2328" stroke-width="3" stroke-linejoin="round"/><circle cx="20" cy="30" r="4.5" fill="#F28C28"/><circle cx="29" cy="19" r="4.5" fill="#5DB7E0"/><circle cx="42" cy="19" r="4.5" fill="#e0a030"/><circle cx="49" cy="30" r="4.5" fill="#3f8f4f"/></svg>
+      </span>
+      <span class="opcion-titulo">Crear una maqueta</span>
+      <span class="opcion-texto">Dibuja y colorea a tu mascota tal como es. Buscaremos reportes con colores parecidos.</span>
+      <span class="opcion-accion">Dibujar mi mascota</span>
+    </button>
+
+    <button type="button" class="opcion opcion-imagen" id="opcImagen" aria-pressed="false" aria-controls="zonaBusqueda">
+      <span class="opcion-icono" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><rect x="6" y="10" width="52" height="44" rx="8" fill="#fff" stroke="#1E2328" stroke-width="3"/><circle cx="22" cy="25" r="5" fill="#F28C28"/><path d="M8 48l16-15 10 9 9-8 13 12" fill="none" stroke="#5DB7E0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="opcion-titulo">Ingresar una imagen</span>
+      <span class="opcion-texto">Sube una foto de tu mascota y buscaremos animales parecidos entre los reportes.</span>
+      <span class="opcion-accion">Subir una foto</span>
+    </button>
+  </div>
+
+  <div class="hoja" id="zonaBusqueda" hidden>
+
+    <!-- ===== Opción 1: maqueta ===== -->
+    <div class="estudio" id="panelMaqueta" hidden aria-label="Crear una maqueta de tu mascota">
+      <div class="lienzo-caja" id="caja">
+        <div id="lienzo"></div>
+        <div class="escaner"></div>
+        <div class="estado-busqueda" id="estadoBusqueda">Analizando colores…</div>
+        <div class="etiqueta-parte" id="etiquetaParte"></div>
+      </div>
+
+      <div class="panel">
+        <div class="bloque">
+          <h3>1. ¿Quién se perdió?</h3>
+          <div class="mascotas" role="group" aria-label="Tipo de mascota">
+            <button type="button" class="btn-mascota" data-pet="perro" aria-pressed="true">🐶 Perro</button>
+            <button type="button" class="btn-mascota" data-pet="gato" aria-pressed="false">🐱 Gato</button>
+          </div>
+          <div style="margin-top:12px">
+            <input type="text" id="nombre" maxlength="24" placeholder="Su nombre (opcional)" aria-label="Nombre de tu mascota">
+          </div>
+          <p class="etiq">Tamaño</p>
+          <div class="tamanos" role="group" aria-label="Tamaño de la mascota">
+            <button type="button" class="btn-tam" data-tam="pequeno" aria-pressed="false" title="Cabe en brazos">Pequeño</button>
+            <button type="button" class="btn-tam" data-tam="mediano" aria-pressed="true">Mediano</button>
+            <button type="button" class="btn-tam" data-tam="grande" aria-pressed="false" title="Llega a la cintura o más">Grande</button>
+          </div>
+        </div>
+
+        <div class="bloque">
+          <h3>2. Coloréalo como es</h3>
+          <p class="ayuda">Toca una parte para rellenarla, o usa el pincel para manchas y detalles.</p>
+          <div class="herramientas">
+            <button type="button" class="herr" id="herrRellenar" aria-pressed="true">🪣 Rellenar</button>
+            <button type="button" class="herr" id="herrPincel" aria-pressed="false">🖌️ Pincel</button>
+            <button type="button" class="herr suave" id="btnDeshacer">↩ Deshacer</button>
+            <button type="button" class="herr suave" id="btnLimpiar">Empezar de nuevo</button>
+          </div>
+          <div class="tamano" id="cajaTamano" hidden>
+            Grosor
+            <input type="range" id="tamano" min="6" max="40" value="16" aria-label="Grosor del pincel">
+            <button type="button" class="herr suave" id="btnQuitarPincel" style="padding:4px 10px;font-size:13px">Quitar manchas</button>
+          </div>
+        </div>
+
+        <div class="bloque">
+          <h3>Colores</h3>
+          <div class="paleta" id="paleta" role="group" aria-label="Paleta de colores"></div>
+          <label class="color-custom">
+            <input type="color" id="colorCustom" value="#e0a030" aria-label="Elegir otro color">
+            ¿No está su color? Elige otro
+          </label>
+        </div>
+
+        <div class="bloque">
+          <h3>3. Cuéntanos cómo es <span class="opcional">(opcional)</span></h3>
+          <textarea id="comentario" maxlength="200" placeholder="Ej: tiene collar rojo, una mancha blanca en el pecho, es muy cariñoso…" aria-label="Descripción breve de tu mascota"></textarea>
+          <div class="contador"><span id="contador">0</span>/200</div>
+        </div>
+
+        <button type="button" class="boton btn-buscar" id="btnBuscar">Buscar con mi maqueta</button>
+      </div>
+    </div>
+
+    <!-- ===== Opción 2: imagen ===== -->
+    <div class="estudio estudio-imagen" id="panelImagen" hidden aria-label="Ingresar una imagen de tu mascota">
+      <div class="columna-foto">
+        <label class="zona-subir" id="zonaSubir">
+          <input type="file" id="archivoFoto" accept="image/*">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="10" width="52" height="44" rx="8" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="22" cy="25" r="5" fill="currentColor"/><path d="M8 48l16-15 10 9 9-8 13 12" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <strong>Toca aquí para elegir una foto</strong>
+          <span>o arrástrala hasta este recuadro</span>
+          <small>JPG o PNG · mejor si se ve toda tu mascota</small>
+        </label>
+
+        <div class="vista-foto" id="vistaFoto" hidden>
+          <img id="fotoUsuario" alt="Foto de tu mascota">
+          <div class="escaner"></div>
+          <div class="estado-busqueda" id="estadoImg">Analizando colores…</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="bloque">
+          <h3>Colores que detectamos</h3>
+          <div class="colores-detectados" id="coloresDetectados"><span class="ayuda">Aparecerán cuando subas la foto.</span></div>
+          <p class="ayuda">Comparamos estos colores con los de cada reporte. Si el fondo es muy llamativo, elige una foto donde tu mascota ocupe el centro.</p>
+          <button type="button" class="herr suave" id="btnCambiarFoto">Cambiar foto</button>
+        </div>
+
+        <div class="bloque">
+          <h3>¿Quién se perdió?</h3>
+          <div class="mascotas" role="group" aria-label="Tipo de mascota">
+            <button type="button" class="btn-mascota img-tipo" data-pet="perro" aria-pressed="true">🐶 Perro</button>
+            <button type="button" class="btn-mascota img-tipo" data-pet="gato" aria-pressed="false">🐱 Gato</button>
+          </div>
+          <p class="etiq">Tamaño <span class="opcional">(opcional)</span></p>
+          <div class="tamanos" role="group" aria-label="Tamaño de la mascota">
+            <button type="button" class="btn-tam img-tam" data-tam="pequeno" aria-pressed="false" title="Cabe en brazos">Pequeño</button>
+            <button type="button" class="btn-tam img-tam" data-tam="mediano" aria-pressed="false">Mediano</button>
+            <button type="button" class="btn-tam img-tam" data-tam="grande" aria-pressed="false" title="Llega a la cintura o más">Grande</button>
+          </div>
+        </div>
+
+        <div class="bloque">
+          <h3>Cuéntanos cómo es <span class="opcional">(opcional)</span></h3>
+          <textarea id="comentarioImg" maxlength="200" placeholder="Ej: collar rojo, una oreja caída, muy cariñoso…" aria-label="Descripción breve de tu mascota"></textarea>
+          <div class="contador"><span id="contadorImg">0</span>/200</div>
+        </div>
+
+        <button type="button" class="boton btn-buscar" id="btnBuscarImg">Buscar con mi foto</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REPORTES Y RESULTADOS ================= -->
+<section class="seccion fondo-blanco">
+  <div class="resultados" id="resultados" aria-live="polite">
+    <h2 id="tituloResultados">Reportes recientes en el Callao</h2>
+    <p class="subtitulo" id="subResultados"></p>
+
+    <div class="aviso-prueba" id="avisoPrueba" hidden>
+      <strong>Modo prueba:</strong> estos reportes son de ejemplo. Conecta Google Sheets en <code>js/config.js</code> para ver los reportes reales.
+    </div>
+
+    <div class="resumen" id="resumen" hidden></div>
+    <div class="centro"><button type="button" class="herr" id="btnQuitarBusqueda" hidden>✕ Quitar búsqueda y ver todos los reportes</button></div>
+
+    <form class="filtros" onsubmit="return false" aria-label="Filtrar reportes">
+      <div class="filtro">
+        <label for="fTipo">Animal</label>
+        <select id="fTipo"><option value="">Todos</option><option value="perro">Perros</option><option value="gato">Gatos</option></select>
+      </div>
+      <div class="filtro">
+        <label for="fTamano">Tamaño</label>
+        <select id="fTamano"><option value="">Todos</option><option value="pequeno">Pequeño</option><option value="mediano">Mediano</option><option value="grande">Grande</option></select>
+      </div>
+      <div class="filtro">
+        <label for="fDistrito">Distrito</label>
+        <select id="fDistrito"></select>
+      </div>
+      <div class="filtro">
+        <label for="fFecha">Cuándo</label>
+        <select id="fFecha"><option value="">Cualquier fecha</option><option value="2">Últimos 2 días</option><option value="7">Última semana</option><option value="30">Último mes</option></select>
+      </div>
+      <div class="filtro filtro-texto">
+        <label for="fTexto">Palabras clave</label>
+        <input type="search" id="fTexto" placeholder="Ej: collar, parque, mercado…" autocomplete="off">
+      </div>
+    </form>
+
+    <div class="barra-lista">
+      <span class="cuenta" id="cuenta"></span>
+      <button type="button" class="herr suave" id="btnLimpiarFiltros" hidden>Limpiar filtros</button>
+    </div>
+
+    <div class="rejilla" id="rejilla"></div>
+    <div class="centro"><button type="button" class="boton boton-celeste" id="btnMas" hidden>Ver más reportes</button></div>
+
+    <p class="nota">Las coincidencias se calculan por el parecido de colores y tamaño. Confirma siempre con la foto y el lugar.</p>
+
+    <div class="invitacion">
+      <div>
+        <h3>¿Encontraste a una mascota en la calle?</h3>
+        <p>Repórtala en un minuto para que su familia pueda encontrarla.</p>
+      </div>
+      <a href="reportar-mascota.html" class="boton">Reportar una mascota</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion fondo-gris">
+    <h2>Qué hacer si se pierde mi perro o gato en Callao</h2>
+    <p class="texto-centro">Mantén la calma y empieza cuanto antes. <strong>Cómo encontrar a mi mascota perdida en Ventanilla</strong>, o en cualquier zona del Callao: recorre tu cuadra, pregunta a vecinos y vigilantes, y usa el buscador de arriba para revisar los reportes de mascotas encontradas.</p>
+    <p class="texto-centro"><strong>Perro o gato perdido en Bellavista Callao, qué hacer:</strong> revisa parques, tiendas y paraderos cercanos, y avisa en los grupos de tu distrito.</p>
+    <p class="texto-centro"><strong>Dónde buscar a un perro o gato extraviado cerca de mi casa:</strong> empieza por los lugares donde suele pasear y por las calles con comida o agua.</p>
+
+    <h2>Cómo publicar un aviso de mascota perdida</h2>
+    <p class="texto-centro">Haz un aviso con una foto clara, el nombre, el color, el tamaño, la zona donde se perdió y un número de contacto. Compártelo en redes sociales y pégalo en tu barrio; luego revisa si alguien ya reportó a tu mascota.</p>
+
+    <h2>Qué hacer si encuentro un perro o gato perdido en Callao</h2>
+    <p class="texto-centro">Acércate con calma, dale agua y revisa si tiene collar o placa. Toma una foto, anota dónde lo viste y repórtalo en <a href="reportar-mascota.html">Reportar una mascota</a> para sumarlo a los <strong>perros y gatos encontrados en Ventanilla esta semana</strong> y otras zonas del Callao.</p>
+
+    <h2>Cómo identificar a mi mascota mediante una placa</h2>
+    <p class="texto-centro">Una placa con su nombre y tu teléfono ayuda a que cualquier persona pueda devolvértela. Revísala siempre y cámbiala si se borra.</p>
+</section>
+
+<div class="pie" id="pie">
+    <p><strong>Una mascota no es solo compañía, es parte de la familia.</strong>
+    Cuidemos, valoremos y protejamos a quienes siempre están a nuestro lado. 🐾❤️</p>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="js/config.js"></script>
+<script src="js/mascota-svg.js"></script>
+<script src="js/reportes.js"></script>
+<script src="js/buscar.js"></script>
+<script src="js/menu.js"></script>
+</body>
+</html>

@@ -10,9 +10,9 @@
 /* ----- Galería de mascotas ----- */
 .galeria {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    max-width: 1200px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr));
+    gap: 22px;
+    max-width: 1100px;
     margin: 35px auto 0;
 }
 
@@ -26,18 +26,355 @@
 
 .historia img {
     width: 100%;
-    height: 250px;
+    aspect-ratio: 16 / 10;
+    height: auto;
     object-fit: cover;
     border-radius: 14px;
 }
 
 .historia h3 {
     color: var(--naranja-oscuro);
-    font-size: 24px;
+    font-size: 1.35rem;
     margin-top: 8px;
 }
 
 .historia p {
-    font-size: 15px;
+    font-size: 0.95rem;
     color: var(--gris);
+}
+
+
+/* ----- Espaciado de la galería (deja aire antes de "En memoria de…") ----- */
+.seccion-galeria {
+    padding-bottom: clamp(70px, 9vw, 110px);
+}
+
+/* ----- En memoria de… ----- */
+/* Sección de borde a borde con fondo de cielo (nubes y aves en vector) y un altar ilustrado.
+   El contenido mide lo mismo que el contenedor de "Historias felices" del inicio (máx. 1100 px).
+   Todo es estático (sin animaciones ni scripts) para que cargue rápido. */
+.seccion.fondo-memoria {
+    --pl: 3%;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 34px var(--pl) 0;
+    border-radius: 0;
+    color: var(--negro);
+    background:
+        radial-gradient(circle at 92% -8%, rgba(255, 214, 120, 0.75) 0 60px, rgba(255, 214, 120, 0) 260px),
+        linear-gradient(180deg, #4FB0DE 0%, #82CBEC 38%, #BFE6F7 72%, #E6F5FC 100%);
+}
+
+.memoria-contenido {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ----- Cielo: nubes y aves ----- */
+.cielo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.nube {
+    position: absolute;
+    height: auto;
+    opacity: 0.85;
+}
+
+.n1 { left: 2%;  top: 78px; width: 140px; }
+.n2 { right: 3%; top: 26px; width: 180px; opacity: 0.75; }
+.n3 { left: 15%; top: 16px; width: 90px;  opacity: 0.6; }
+.n4 { right: 17%; top: 80px; width: 100px; opacity: 0.6; }
+.n5 { left: 1%;   top: 40%;  width: 150px; opacity: 0.7; }
+.n6 { right: 1%;  top: 48%;  width: 170px; opacity: 0.75; }
+.n7 { left: 20%;  top: 66px; width: 80px;  opacity: 0.5; }
+.n8 { right: 21%; top: 70px; width: 90px;  opacity: 0.55; }
+.n9 { left: 7%;   bottom: 54px; width: 130px; opacity: 0.8; }
+.n10 { right: 6%; bottom: 58px; width: 150px; opacity: 0.75; }
+
+.seccion.fondo-memoria h2 {
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    color: var(--blanco);
+    text-shadow: 0 3px 0 #1d6a92, 0 0 18px rgba(30, 35, 40, 0.25);
+}
+
+.fondo-memoria h2::after {
+    content: "";
+    display: block;
+    width: 110px;
+    height: 4px;
+    margin: 5px auto 0;
+    background: linear-gradient(90deg, var(--naranja), var(--blanco), var(--naranja));
+    border-radius: 4px;
+}
+
+.fondo-memoria .texto-centro {
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: var(--negro);
+    font-weight: 700;
+}
+
+.fondo-memoria .texto-centro strong {
+    color: var(--negro);
+    font-weight: 800;
+}
+
+.memoria-etiqueta {
+    width: fit-content;
+    margin: 0 auto 4px;
+    padding: 1px 12px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--naranja-oscuro);
+    border: 1px solid var(--naranja);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+/* ----- Altar: tarjeta TOM · linterna · tarjeta DULCE ----- */
+.homenajes {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1fr);
+    gap: 6px;
+    align-items: stretch;
+    margin: 14px 0 0;
+}
+
+.tributo {
+    display: grid;
+    grid-template-columns: 204px minmax(0, 1fr);
+    gap: 8px;
+    align-items: center;
+    padding: 10px 12px 10px 4px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(93, 183, 224, 0.7);
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(29, 106, 146, 0.25);
+}
+
+/* marco vectorial con la foto adentro */
+.tributo-escena {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.marco {
+    display: block;
+    width: 172px;
+    height: auto;
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.35));
+}
+
+/* ofrenda: velas y cempasúchil sobre la base del marco */
+.ofrenda {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: -22px;
+    pointer-events: none;
+}
+
+.ofrenda svg {
+    flex: none;
+    overflow: visible;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4));
+}
+
+.ofrenda .flor {
+    margin: 0 -7px;
+}
+
+.v-vaso {
+    width: 28px;
+    height: 49px;
+    margin-right: 2px;
+}
+
+.v-alta {
+    width: 21px;
+    height: 67px;
+    margin-left: 2px;
+}
+
+/* texto de la tarjeta */
+.tributo-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    text-align: left;
+}
+
+.tributo-etiqueta {
+    padding: 1px 11px;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--blanco);
+    background: var(--naranja-oscuro);
+    border-radius: 20px;
+}
+
+.tributo-texto h3 {
+    font-size: 1.4rem;
+    line-height: 1.1;
+    color: var(--naranja-oscuro);
+    letter-spacing: 2px;
+}
+
+.tributo-frase {
+    font-family: "Baloo 2", "Trebuchet MS", sans-serif;
+    font-size: 1.02rem;
+    font-weight: 800;
+    line-height: 1.25;
+    color: #1d6a92;
+}
+
+.tributo-texto p:not(.tributo-frase) {
+    font-size: 0.9rem;
+    line-height: 1.42;
+    color: var(--negro);
+}
+
+.tributo-enlace {
+    margin-top: 4px;
+    padding: 3px 14px;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--blanco);
+    background: var(--naranja-oscuro);
+    border-radius: 30px;
+}
+
+.tributo-enlace:hover {
+    background: var(--negro);
+}
+
+/* centro del altar */
+.altar-centro {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.linterna {
+    display: block;
+    width: 52px;
+    height: auto;
+    overflow: visible;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+/* ----- Franja final: cielo con banco de nubes y el compromiso ----- */
+.mesa {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+    margin: 10px calc(var(--pl) * -1) 0;
+    padding: 10px 20px 36px;
+}
+
+/* banco de nubes blancas en el borde de abajo */
+.mesa::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 38px;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 24px 38px, #fff 0 24px, transparent 25px) 0 0 / 48px 38px repeat-x,
+        radial-gradient(circle at 60px 38px, rgba(255, 255, 255, 0.65) 0 28px, transparent 29px) 0 0 / 84px 38px repeat-x;
+    pointer-events: none;
+}
+
+.compromiso {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 16px;
+    padding: 8px 22px;
+    text-align: center;
+    color: var(--negro);
+    background: rgba(255, 255, 255, 0.92);
+    border: 2px solid var(--naranja);
+    border-radius: 40px;
+    box-shadow: 0 6px 16px rgba(29, 106, 146, 0.3);
+}
+
+.compromiso h3 {
+    margin: 0;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    color: var(--negro);
+}
+
+.compromiso .boton {
+    padding: 5px 18px;
+    font-size: 0.95rem;
+}
+
+/* ----- Tablet y celular ----- */
+@media (max-width: 900px) {
+    .homenajes {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 560px;
+        margin-inline: auto;
+    }
+
+    .altar-centro {
+        display: none;
+    }
+}
+
+@media (max-width: 520px) {
+    .seccion.fondo-memoria {
+        --pl: 12px;
+        padding-top: 30px;
+    }
+
+    .tributo {
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: center;
+        padding: 14px 14px 16px;
+    }
+
+    .tributo-texto {
+        align-items: center;
+        text-align: center;
+    }
+
+    .compromiso {
+        padding: 8px 14px;
+    }
+
+    .n3, .n4, .n5, .n6, .n7, .n8, .n9, .n10 {
+        display: none;
+    }
+
+    .n1 { width: 80px; top: 22px; }
+    .n2 { width: 90px; top: 6px; }
 }
